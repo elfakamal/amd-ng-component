@@ -11,15 +11,15 @@ define([], function() {
     $stateProvider
       .state('About', {
         url: '/about',
-        templateUrl: 'global/views/about.html'
+        templateUrl: 'scripts/global/views/about.html'
       })
       .state('Contact', {
         url: '/contact',
-        templateUrl: 'global/views/contact.html'
+        templateUrl: 'scripts/global/views/contact.html'
       })
-      .state('home', {
+      .state('Home', {
         url: '/',
-        templateUrl: 'global/views/index.html'
+        templateUrl: 'scripts/global/views/index.html'
       });
   };
 
