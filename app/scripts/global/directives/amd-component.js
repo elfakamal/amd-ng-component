@@ -33,6 +33,7 @@ define(["require", "lodash"], function(require, _) {
             {
               //load its view and replace the original container by the view.
               var angularElement = $compile(baseTemplate)($scope);
+              $element.empty();
               $element.append(angularElement);
 
               //it verfies whether the component has the loadComplete method to call it.
@@ -48,11 +49,6 @@ define(["require", "lodash"], function(require, _) {
         if( _.has($attrs, "autoStartComponent") ) {
           //automatically start a component
           bootstrapComponent();
-        } else {
-          //manually start a component
-          $rootScope.$on("start-" + component, function() {
-            bootstrapComponent();
-          });
         }
 
         //removing a component is as simple as removing its html content,
@@ -62,7 +58,15 @@ define(["require", "lodash"], function(require, _) {
           //TODO: remove this dependency to jquery.
           //see jqLite's empty() function : http://api.jquery.com/empty/
 //          $($element).html("");
+
+          console.log("try to empty the element");
+          $element.empty();
         };
+
+        //listening for the stop event to manually start a component.
+        $rootScope.$on("start-" + component, function() {
+          bootstrapComponent();
+        });
 
         //listening for the stop event, to remove the component.
         $rootScope.$on("stop-" + component, function() {
