@@ -55,11 +55,6 @@ define(["require", "lodash"], function(require, _) {
         //we can't (& must not) unload the dependencies from RequireJS 
         //neither from angular.
         var removeComponent = function() {
-          //TODO: remove this dependency to jquery.
-          //see jqLite's empty() function : http://api.jquery.com/empty/
-//          $($element).html("");
-
-          console.log("try to empty the element");
           $element.empty();
         };
 
